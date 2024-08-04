@@ -1,1 +1,3 @@
-# SOTEServerPlugin
+NukkitPlugin
+=======
+SOTEServerPlugin for Nukkit Project

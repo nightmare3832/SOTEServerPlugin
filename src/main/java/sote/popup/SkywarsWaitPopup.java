@@ -1,0 +1,27 @@
+package sote.popup;
+
+import cn.nukkit.Player;
+import sote.Game;
+import sote.GameProvider;
+import sote.inventory.Inventorys;
+import sote.skywarssolo.SkywarsSolo;
+
+public class SkywarsWaitPopup extends Popup{
+
+    public SkywarsWaitPopup(Player player) {
+        super(player);
+        update();
+    }
+
+    @Override
+    public void update(){
+        Game game = GameProvider.getPlayingGame(this.owner);
+        if(!(game instanceof SkywarsSolo)) return;
+        String space = "                                                        ";
+        String tag = "";
+        tag += space+"Players: "+game.getGameDataAsInt("count")+"/"+SkywarsSolo.MAX_PLAYERS+"\n";
+        tag += space+"GameID: §f"+game.number+"\n\n\n\n";
+        if(Inventorys.getGUI(this.owner) == Inventorys.GUI_CLASSIC) tag += "\n\n\n\n\n";
+        this.txt = tag;
+    }
+}
